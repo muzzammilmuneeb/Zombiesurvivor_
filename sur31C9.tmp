@@ -1,0 +1,129 @@
+[gd_scene load_steps=9 format=3 uid="uid://b6j3pyhoo3s8m"]
+
+[ext_resource type="PackedScene" uid="uid://c15vluv5i81gw" path="res://player.tscn" id="1_gn7f5"]
+[ext_resource type="Script" path="res://survivors_game.gd" id="1_h7nk2"]
+[ext_resource type="PackedScene" uid="uid://dnrdjek717jkc" path="res://pine_tree.tscn" id="2_0sof6"]
+[ext_resource type="Theme" uid="uid://dm4fcb18tysjh" path="res://go_button_theme.tres" id="4_3740x"]
+[ext_resource type="PackedScene" uid="uid://cf84j0hewh40d" path="res://joystick.tscn" id="5_gv8j3"]
+[ext_resource type="Script" path="res://pauseInputHandler.gd" id="6_3ex5j"]
+[ext_resource type="Script" path="res://score.gd" id="7_ecrwq"]
+
+[sub_resource type="Curve2D" id="Curve2D_gygu7"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -142, -113, 0, 0, 0, 0, 2050, -118, 0, 0, 0, 0, 2045, 1167, 0, 0, 0, 0, -137, 1162)
+}
+point_count = 4
+
+[node name="Game" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_h7nk2")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -30
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+offset_right = 1914.0
+offset_bottom = 1075.0
+
+[node name="Player" parent="." instance=ExtResource("1_gn7f5")]
+unique_name_in_owner = true
+position = Vector2(923, 550)
+
+[node name="Path2D" type="Path2D" parent="Player"]
+position = Vector2(-923, -550)
+curve = SubResource("Curve2D_gygu7")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Player/Path2D"]
+unique_name_in_owner = true
+position = Vector2(-142, -113)
+rotation = -0.00228102
+
+[node name="Joystick" parent="Player" instance=ExtResource("5_gv8j3")]
+position = Vector2(-654, 325)
+
+[node name="PineTree" parent="." instance=ExtResource("2_0sof6")]
+position = Vector2(415, 579)
+
+[node name="PineTree2" parent="." instance=ExtResource("2_0sof6")]
+position = Vector2(520, 270)
+
+[node name="PineTree3" parent="." instance=ExtResource("2_0sof6")]
+position = Vector2(1323, 312)
+
+[node name="PineTree4" parent="." instance=ExtResource("2_0sof6")]
+position = Vector2(1246, 376)
+
+[node name="PineTree5" parent="." instance=ExtResource("2_0sof6")]
+position = Vector2(1368, 440)
+
+[node name="PineTree6" parent="." instance=ExtResource("2_0sof6")]
+position = Vector2(1376, 857)
+
+[node name="PineTree7" parent="." instance=ExtResource("2_0sof6")]
+position = Vector2(720, 843)
+
+[node name="PineTree8" parent="." instance=ExtResource("2_0sof6")]
+position = Vector2(293, 539)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
+[node name="GameOver" type="CanvasLayer" parent="."]
+unique_name_in_owner = true
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="GameOver"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.513726)
+
+[node name="Label" type="Label" parent="GameOver/ColorRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -43.5
+offset_top = -11.5
+offset_right = 43.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 156
+text = "Game Over"
+
+[node name="RestartButton" type="Button" parent="GameOver"]
+unique_name_in_owner = true
+process_mode = 3
+top_level = true
+z_index = 10
+offset_left = 798.0
+offset_top = 701.0
+offset_right = 1160.0
+offset_bottom = 826.0
+theme = ExtResource("4_3740x")
+theme_override_font_sizes/font_size = 80
+text = "Restart"
+
+[node name="PauseInputHandler" type="Node2D" parent="."]
+script = ExtResource("6_3ex5j")
+
+[node name="Score" type="Label" parent="."]
+offset_left = 1026.0
+offset_top = 6.0
+offset_right = 1882.0
+offset_bottom = 143.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 100
+text = "0"
+horizontal_alignment = 2
+script = ExtResource("7_ecrwq")
+
+[connection signal="health_depleted" from="Player" to="." method="_on_player_health_depleted"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="pressed" from="GameOver/RestartButton" to="." method="_on_restart_button_pressed"]
