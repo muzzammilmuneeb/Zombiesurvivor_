@@ -16,7 +16,7 @@ To run this project, you will need to have [Godot 4.5](https://godotengine.org/d
 
 1. **Clone the Repository**:
    ```bash
-   git clone https://github.com/WanderlustKing11/2d-godot-survivors-game.git
+   git clone https://github.com/muzzammilmuneeb/Zombiesurvivor_/edit/main/README.md
    ```
 2. **Open the Project**:
    - Launch Godot 4.5.
@@ -31,7 +31,7 @@ To run this project, you will need to have [Godot 4.5](https://godotengine.org/d
 
 - **Movement**: Use the `W`, `A`, `S`, `D` or `up arrow key`, `down arrow key`, `right arrow key`, `left arrow key` or even `8 numpad`, `2 numpad`, `4 numpad`, `6 numpad` or even the `Joystick` to move the character.
 - **Shooting**: The character automatically shoots at enemies.
-- **Objective**: Survive as long as possible against waves of enemies.
+- **Objective**: Survive as long as possible against waves of enemies. If your health is low you can sacrifice the ease of the game to regen by pressing `E` on the keyboard or pressing the `sacrifice button` on the screen.
 
 ## Features
 
@@ -41,9 +41,9 @@ To run this project, you will need to have [Godot 4.5](https://godotengine.org/d
 
 ## Screenshots
 
-<img width="1589" height="947" alt="image" src="https://github.com/user-attachments/assets/7b6282e1-f4d6-42ca-83a1-5918ee035986" />
+<img width="1703" height="1039" alt="Screenshot 2025-09-27 234558" src="https://github.com/user-attachments/assets/92b45eed-cd2e-4f81-a083-7a5c2e733fa3" />
+<img width="988" height="529" alt="Screenshot 2025-09-27 234412" src="https://github.com/user-attachments/assets/9a0fbb74-2a53-46c3-99e8-20a65974bc7d" />
 
-<img width="1645" height="938" alt="image" src="https://github.com/user-attachments/assets/d1f79853-7cf2-40c9-8951-94d074eeb604" />
 
 ## Technologies Used
 
